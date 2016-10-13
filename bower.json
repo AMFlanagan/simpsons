@@ -1,0 +1,17 @@
+{
+  "name": "simpsons",
+  "homepage": "https://github.com/AMFlanagan/simpsons",
+  "authors": [
+    "Adam Flanagan <adam.flanagan@skybettingandgaming.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
