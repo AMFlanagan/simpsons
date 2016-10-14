@@ -1,26 +1,26 @@
-var EpisodeList = require('./episodeList');
-var EpisodeCount = episode('./episodeCount');
+var EpisodeList = require('./episodeList.jsx');
+var EpisodeCount = require('./episodeCount.jsx');
 
 var dummyEpisodes = [
   {
     seasonNum:"1",
     episodeNum:"1",
-    title:"title"
+    title:"Homers Episode"
   },
   {
-    seasonNum:"1",
-    episodeNum:"1",
-    title:"title"
+    seasonNum:"2",
+    episodeNum:"2",
+    title:"Marge's Episode"
   },
   {
-    seasonNum:"1",
-    episodeNum:"1",
-    title:"title"
+    seasonNum:"3",
+    episodeNum:"3",
+    title:"Hank Scorpios Episode"
   },
   {
-    seasonNum:"1",
-    episodeNum:"1",
-    title:"title"
+    seasonNum:"4",
+    episodeNum:"4",
+    title:"Moes Episode"
   }
 ];
 
@@ -29,8 +29,8 @@ var EpisodeSelect = React.createClass({
   render: function() {
     return (
       <div className="episodeSelect">
-        <episodeCount episodes={dummyEpisodes}/>
-        <episodeList episodes={dummyEpisodes}/>
+        <EpisodeCount episode={dummyEpisodes}/>
+        <EpisodeList episode={dummyEpisodes}/>
       </div>
 
     )

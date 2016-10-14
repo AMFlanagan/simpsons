@@ -1,6 +1,6 @@
 var Episode = require('./episode.jsx');
 
-var EpisodeList = React.createClass({
+var EpisodeCount = React.createClass({
   render: function() {
     var list = this.props.episode.map(function(episode, i) {
       return (
@@ -15,7 +15,7 @@ var EpisodeList = React.createClass({
       </div>
     )
 
-    )
+
   }
 });
 

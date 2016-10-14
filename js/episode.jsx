@@ -3,13 +3,13 @@ var Episode = React.createClass({
     return (
       <div className="episode">
         <div className="seasonNum">
-        {this.props.seasonNum}
+          <p>Season: {this.props.season}</p>
         </div>
         <div className="episodeNum">
-        {this.props.episodeNum}
+          <p>Episode: {this.props.episode}</p>
         </div>
         <div className="title">
-        {this.props.title}
+          <p>Title: {this.props.title}</p>
         </div>
       </div>
     )

@@ -17,7 +17,6 @@ var EpisodeList = React.createClass({
       </div>
     )
 
-    )
   }
 });
 
