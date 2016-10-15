@@ -57,24 +57,44 @@
 	'use strict';
 
 	var EpisodeList = __webpack_require__(2);
-	var EpisodeCount = __webpack_require__(3);
+	var EpisodeCount = __webpack_require__(4);
+	var CharacterList = __webpack_require__(5);
 
 	var dummyEpisodes = [{
 	  seasonNum: "1",
 	  episodeNum: "1",
-	  title: "Homers Episode"
+	  title: "Homers Episode",
+	  character: "Homer"
 	}, {
 	  seasonNum: "2",
 	  episodeNum: "2",
-	  title: "Marge's Episode"
+	  title: "Marge's Episode",
+	  character: "Marge"
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "3",
-	  title: "Hank Scorpios Episode"
+	  title: "Hank Scorpios Episode",
+	  character: "Hank Scorpio"
 	}, {
 	  seasonNum: "4",
 	  episodeNum: "4",
-	  title: "Moes Episode"
+	  title: "Moes Episode",
+	  character: "Moe"
+	}, {
+	  seasonNum: "5",
+	  episodeNum: "5",
+	  title: "Homers Episode",
+	  character: "Homer"
+	}];
+
+	var dummyCharacters = [{
+	  character: "Homer"
+	}, {
+	  character: "Marge"
+	}, {
+	  character: "Hank Scorpio"
+	}, {
+	  character: "Moe"
 	}];
 
 	var EpisodeSelect = React.createClass({
@@ -84,6 +104,7 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'episodeSelect' },
+	      React.createElement(CharacterList, { characters: dummyCharacters }),
 	      React.createElement(EpisodeCount, { episode: dummyEpisodes }),
 	      React.createElement(EpisodeList, { episode: dummyEpisodes })
 	    );
@@ -98,7 +119,7 @@
 
 	"use strict";
 
-	var Episode = __webpack_require__(4);
+	var Episode = __webpack_require__(3);
 
 	var EpisodeList = React.createClass({
 	  displayName: "EpisodeList",
@@ -122,38 +143,6 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var Episode = __webpack_require__(4);
-
-	var EpisodeCount = React.createClass({
-	  displayName: 'EpisodeCount',
-
-	  render: function render() {
-	    var list = this.props.episode.map(function (episode, i) {
-	      return React.createElement(Episode, { key: i });
-	    });
-
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'p',
-	        null,
-	        'Your search returned ',
-	        list.length,
-	        ' episodes'
-	      )
-	    );
-	  }
-	});
-
-	module.exports = EpisodeCount;
-
-/***/ },
-/* 4 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -200,6 +189,93 @@
 	});
 
 	module.exports = Episode;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Episode = __webpack_require__(3);
+
+	var EpisodeCount = React.createClass({
+	  displayName: 'EpisodeCount',
+
+	  render: function render() {
+	    var list = this.props.episode.map(function (episode, i) {
+	      return React.createElement(Episode, { key: i });
+	    });
+
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'p',
+	        null,
+	        'Your search returned ',
+	        list.length,
+	        ' episodes'
+	      )
+	    );
+	  }
+	});
+
+	module.exports = EpisodeCount;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var Character = __webpack_require__(6);
+
+	var CharacterList = React.createClass({
+	  displayName: "CharacterList",
+
+	  render: function render() {
+	    var list = this.props.characters.map(function (character, i) {
+	      return React.createElement(Character, { key: i, character: character.character });
+	    });
+
+	    return React.createElement(
+	      "div",
+	      { className: "characters" },
+	      list
+	    );
+	  }
+	});
+
+	module.exports = CharacterList;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var Character = React.createClass({
+	  displayName: "Character",
+
+
+	  handleClick: function handleClick() {
+	    console.log(this.props.character);
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "character" },
+	      React.createElement(
+	        "p",
+	        { onClick: this.handleClick, className: "button" },
+	        this.props.character
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Character;
 
 /***/ }
 /******/ ]);
