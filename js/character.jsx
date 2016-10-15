@@ -1,11 +1,26 @@
 var Character = React.createClass({
 
+  getInitialState: function() {
+
+    return {
+      selected: []
+    }
+  },
+
 
   handleClick: function() {
-    console.log(this.props.character)
+
+    if (this.handleClick) {
+      this.state.selected.push(this.props.character);
+
+    }
+      console.log(this.state.selected)
   },
 
   render: function() {
+
+
+
     return (
 
       <div className="character">

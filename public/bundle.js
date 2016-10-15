@@ -258,11 +258,23 @@
 	  displayName: "Character",
 
 
+	  getInitialState: function getInitialState() {
+
+	    return {
+	      selected: []
+	    };
+	  },
+
 	  handleClick: function handleClick() {
-	    console.log(this.props.character);
+
+	    if (this.handleClick) {
+	      this.state.selected.push(this.props.character);
+	    }
+	    console.log(this.state.selected);
 	  },
 
 	  render: function render() {
+
 	    return React.createElement(
 	      "div",
 	      { className: "character" },
