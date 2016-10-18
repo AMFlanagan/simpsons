@@ -37,26 +37,51 @@ var dummyEpisodes = [
 
 var dummyCharacters = [
   {
-    character: "Homer"
+    character: "Homer",
+    picture: "./public/images/Homer.jpg"
   },
   {
-    character: "Marge"
+    character: "Marge",
+    picture: "./public/images/Marge.jpg"
   },
   {
-    character: "Hank Scorpio"
+    character: "Hank Scorpio",
+    picture: "./public/images/Hank.jpg"
   },
   {
-    character: "Moe"
+    character: "Moe",
+    picture: "./public/images/Moe.jpg"
   }
   ]
 
 
 var EpisodeSelect = React.createClass({
+
+  getInitialState: function(){
+    return {
+      selected: []
+    }
+  },
+
+  handleClick: function(character){
+
+    var tryit = this.state.selected;
+
+    if (this.state.selected.indexOf(character) < 0 && this.state.selected.length < 3) {
+      tryit.push(character);
+      this.setState({
+        selected: tryit
+      });
+
+    console.log(this.state.selected)
+    }
+  },
+
   render: function() {
     return (
       <div className="episodeSelect">
-        <CharacterList characters={dummyCharacters} />
-        <EpisodeCount episode={dummyEpisodes} />
+        <CharacterList characters={dummyCharacters} handleClick={this.handleClick} /><br></br>
+        <EpisodeCount episode={dummyEpisodes} /><br></br>
         <EpisodeList episode={dummyEpisodes} />
       </div>
 

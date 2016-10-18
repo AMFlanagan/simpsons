@@ -17,3 +17,32 @@ body {
   border-color: #cccc00;
   height: 20%;
 }
+
+
+img {
+  border: 2px solid;
+  border-color: black;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.characters {
+  padding: 5%
+}
+
+.character {
+  width: 25%;
+  padding: 0%;
+  margin: 0 auto;
+  float: left;
+}
+
+.count {
+  background-color: white;
+  margin: 0 auto;
+  float: left;
+}
+
+.episodes {
+  padding-top: 10%;
+}

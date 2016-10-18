@@ -88,24 +88,51 @@
 	}];
 
 	var dummyCharacters = [{
-	  character: "Homer"
+	  character: "Homer",
+	  picture: "./public/images/Homer.jpg"
 	}, {
-	  character: "Marge"
+	  character: "Marge",
+	  picture: "./public/images/Marge.jpg"
 	}, {
-	  character: "Hank Scorpio"
+	  character: "Hank Scorpio",
+	  picture: "./public/images/Hank.jpg"
 	}, {
-	  character: "Moe"
+	  character: "Moe",
+	  picture: "./public/images/Moe.jpg"
 	}];
 
 	var EpisodeSelect = React.createClass({
 	  displayName: 'EpisodeSelect',
 
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      selected: []
+	    };
+	  },
+
+	  handleClick: function handleClick(character) {
+
+	    var tryit = this.state.selected;
+
+	    if (this.state.selected.indexOf(character) < 0 && this.state.selected.length < 3) {
+	      tryit.push(character);
+	      this.setState({
+	        selected: tryit
+	      });
+
+	      console.log(this.state.selected);
+	    }
+	  },
+
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      { className: 'episodeSelect' },
-	      React.createElement(CharacterList, { characters: dummyCharacters }),
+	      React.createElement(CharacterList, { characters: dummyCharacters, handleClick: this.handleClick }),
+	      React.createElement('br', null),
 	      React.createElement(EpisodeCount, { episode: dummyEpisodes }),
+	      React.createElement('br', null),
 	      React.createElement(EpisodeList, { episode: dummyEpisodes })
 	    );
 	  }
@@ -194,12 +221,12 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var Episode = __webpack_require__(3);
 
 	var EpisodeCount = React.createClass({
-	  displayName: 'EpisodeCount',
+	  displayName: "EpisodeCount",
 
 	  render: function render() {
 	    var list = this.props.episode.map(function (episode, i) {
@@ -207,14 +234,14 @@
 	    });
 
 	    return React.createElement(
-	      'div',
-	      null,
+	      "div",
+	      { className: "count" },
 	      React.createElement(
-	        'p',
+	        "p",
 	        null,
-	        'Your search returned ',
+	        "Your search returned ",
 	        list.length,
-	        ' episodes'
+	        " episodes"
 	      )
 	    );
 	  }
@@ -233,29 +260,11 @@
 	var CharacterList = React.createClass({
 	  displayName: "CharacterList",
 
-	  getInitialState: function getInitialState() {
-	    return {
-	      selected: []
-	    };
-	  },
-
-	  handleClick: function handleClick(character) {
-	    var tryit = this.state.selected;
-
-	    if (this.state.selected.indexOf(character) < 0 && this.state.selected.length < 3) {
-	      tryit.push(character);
-	      this.setState({
-	        selected: tryit
-	      });
-
-	      console.log(this.state.selected);
-	    }
-	  },
 
 	  render: function render() {
 	    var self = this;
 	    var list = this.props.characters.map(function (character, i) {
-	      return React.createElement(Character, { key: i, character: character.character, handleClick: self.handleClick });
+	      return React.createElement(Character, { key: i, character: character.character, picture: character.picture, handleClick: self.props.handleClick });
 	    });
 
 	    return React.createElement(
@@ -296,11 +305,7 @@
 	    return React.createElement(
 	      "div",
 	      { className: "character" },
-	      React.createElement(
-	        "p",
-	        { onClick: this.handleClick, className: "button" },
-	        this.props.character
-	      )
+	      React.createElement("img", { src: this.props.picture, className: "ChaPic", onClick: this.handleClick })
 	    );
 	  }
 	});

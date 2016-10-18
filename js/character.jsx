@@ -24,8 +24,8 @@ var Character = React.createClass({
     return (
 
       <div className="character">
-        <p onClick={this.handleClick} className="button" >{this.props.character}</p>
-      </div>
+        <img src={this.props.picture} className="ChaPic" onClick={this.handleClick}></img>
+        </div>
 
     )
   }
