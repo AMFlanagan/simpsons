@@ -1,3 +1,9 @@
+
+
+
+
+
+
 body {
   background: url(https://images3.alphacoders.com/591/thumb-1920-591067.jpg) fixed;
   -webkit-background-size: cover;
@@ -20,12 +26,11 @@ body {
 
 }
 
-
 .episodes {
-  padding-top: 40%;
+  padding-top: 10%;
 }
 
-img {
+.ChaPic {
   border: 2px solid;
   border-color: black;
   border-radius: 50%;
@@ -34,12 +39,14 @@ img {
 
 .characters {
   padding: 5%
-  height: auto;
+  height: 40%;
   display: block;
+  padding-left: 5%;
+  padding-top: 2%;
 }
 
 .character {
-  width: 25%;
+  width: 15%;
   padding: 0%;
   margin: 0 auto;
   float: left;
@@ -49,5 +56,42 @@ img {
 .count {
   background-color: white;
   margin: 0 auto;
-  float: left;
+  display: block;
+}
+
+.SimpT {
+  height: 213px;
+  width: 480px;
+}
+
+.RS {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  width: 50%;
+  padding-left: 25%;
+  padding-right: 25%;
+
+}
+.RS:hover {background-color: #3e8e41}
+
+.RS:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.reset {
+  display: block;
+  margin: 0 auto;
+  height: inherit;
 }

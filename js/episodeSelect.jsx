@@ -1,7 +1,7 @@
 var EpisodeList = require('./episodeList.jsx');
 var EpisodeCount = require('./episodeCount.jsx');
 var CharacterList = require('./characterList.jsx');
-
+var Resetit = require('./reset.jsx');
 var remainingEps = [];
 
 var dummyEpisodes = [
@@ -127,10 +127,6 @@ var dummyCharacters = [
   {
     character: "FatTony",
     picture: "./public/images/FatTony.jpg"
-  },
-  {
-    character: "Hank Scorpio",
-    picture: "./public/images/Hank.jpg"
   }
   ]
 
@@ -159,6 +155,18 @@ var EpisodeSelect = React.createClass({
 
     }
 
+
+  },
+
+  handleReset: function(){
+
+      this.setState({
+        selected: []
+      });
+
+      this.episodeRidder()
+
+      console.log(this.state.selected)
 
   },
 
@@ -213,6 +221,7 @@ var EpisodeSelect = React.createClass({
       return (
         <div className="episodeSelect">
           <CharacterList characters={dummyCharacters} handleClick={this.handleClick}/><br></br>
+          <Resetit handleReset={this.handleReset} /><br></br>
           <EpisodeCount episode={this.state.remainingEps} /><br></br>
           <EpisodeList episode={this.state.remainingEps} />
         </div>
@@ -222,6 +231,7 @@ var EpisodeSelect = React.createClass({
       return (
         <div className="episodeSelect">
           <CharacterList characters={dummyCharacters} handleClick={this.handleClick}/><br></br>
+          <Resetit handleReset={this.handleReset} /><br></br>
         </div>
       )
     }

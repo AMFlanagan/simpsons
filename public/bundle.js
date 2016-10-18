@@ -59,7 +59,7 @@
 	var EpisodeList = __webpack_require__(2);
 	var EpisodeCount = __webpack_require__(4);
 	var CharacterList = __webpack_require__(5);
-
+	var Resetit = __webpack_require__(14);
 	var remainingEps = [];
 
 	var dummyEpisodes = [{
@@ -160,9 +160,6 @@
 	}, {
 	  character: "FatTony",
 	  picture: "./public/images/FatTony.jpg"
-	}, {
-	  character: "Hank Scorpio",
-	  picture: "./public/images/Hank.jpg"
 	}];
 
 	var EpisodeSelect = React.createClass({
@@ -189,6 +186,17 @@
 
 	      console.log(this.state.selected);
 	    }
+	  },
+
+	  handleReset: function handleReset() {
+
+	    this.setState({
+	      selected: []
+	    });
+
+	    this.episodeRidder();
+
+	    console.log(this.state.selected);
 	  },
 
 	  characterRidder: function characterRidder(characters) {},
@@ -237,6 +245,8 @@
 	        { className: 'episodeSelect' },
 	        React.createElement(CharacterList, { characters: dummyCharacters, handleClick: this.handleClick }),
 	        React.createElement('br', null),
+	        React.createElement(Resetit, { handleReset: this.handleReset }),
+	        React.createElement('br', null),
 	        React.createElement(EpisodeCount, { episode: this.state.remainingEps }),
 	        React.createElement('br', null),
 	        React.createElement(EpisodeList, { episode: this.state.remainingEps })
@@ -246,6 +256,8 @@
 	        'div',
 	        { className: 'episodeSelect' },
 	        React.createElement(CharacterList, { characters: dummyCharacters, handleClick: this.handleClick }),
+	        React.createElement('br', null),
+	        React.createElement(Resetit, { handleReset: this.handleReset }),
 	        React.createElement('br', null)
 	      );
 	    }
@@ -967,6 +979,32 @@
 
 	module.exports = invariant;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var Resetit = React.createClass({
+	  displayName: "Resetit",
+
+
+	  handleReset: function handleReset() {
+
+	    this.props.handleReset();
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "reset" },
+	      React.createElement("input", { type: "button", value: "Reset", className: "RS", onClick: this.props.handleReset })
+	    );
+	  }
+	});
+
+	module.exports = Resetit;
 
 /***/ }
 /******/ ]);
