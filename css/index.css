@@ -1,0 +1,19 @@
+body {
+  background: url(https://images3.alphacoders.com/591/thumb-1920-591067.jpg) fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.episode {
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 1%;
+  width: 60%;
+  text-align: center;
+  border-radius: 25px;
+  border: 2px solid;
+  border-color: #cccc00;
+  height: 20%;
+}

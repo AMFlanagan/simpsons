@@ -1,21 +1,21 @@
+var update = require('react-addons-update');
 var Character = React.createClass({
 
   getInitialState: function() {
-
+    console.log("init")
     return {
       selected: []
     }
+
   },
 
 
   handleClick: function() {
 
-    if (this.handleClick) {
-      this.state.selected.push(this.props.character);
+    this.props.handleClick(this.props.character)
 
-    }
-      console.log(this.state.selected)
   },
+
 
   render: function() {
 
