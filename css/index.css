@@ -35,6 +35,38 @@ body {
 
 }
 
+.seasonNum {
+  width: 40%;
+  margin-right: 0;
+}
+
+.episodeNum {
+  width: 40%;
+  margin-right: 0;
+}
+
+.title {
+  width: 40%;
+  margin-right: 0;
+}
+.episode picList {
+  list-style: none;
+  display: block;
+  width: 20%;
+
+}
+
+.smallImg{
+  width: 10%;
+  height: 10%;
+
+}
+
+.picList smallImg {
+  float: right;
+  display: block;
+}
+
 
 
 .ChaPic {

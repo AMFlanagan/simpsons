@@ -6,7 +6,7 @@ var EpisodeList = React.createClass({
       return (
         <Episode key={i} season={episode.seasonNum}
         episode={episode.episodeNum}
-        title={episode.title} />
+        title={episode.title} picture1={episode.picture1} picture2={episode.picture2} picture3={episode.picture3} />
       )
     });
 

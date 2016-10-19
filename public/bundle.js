@@ -67,62 +67,91 @@
 	  seasonNum: "3",
 	  episodeNum: "1",
 	  title: "Stark Raving Dad",
-	  character: ["Bart", "MJ", "Lisa"]
+	  character: ["Bart", "MJ", "Lisa"],
+	  picture1: "./public/images/Bart.jpg",
+	  picture2: "./public/images/MJ.jpg",
+	  picture3: "./public/images/Lisa.jpg"
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "2",
 	  title: "Mr. Lisa Goes to washington",
-	  character: ["Lisa"]
+	  character: ["Lisa"],
+	  picture1: "./public/images/Lisa.jpg"
+
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "3",
 	  title: "When Flanders Failed",
-	  character: ["Flanders", "Homer"]
+	  character: ["Flanders", "Homer"],
+	  picture1: "./public/images/Flanders.jpg",
+	  picture2: "./public/images/Homer.jpg"
+
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "4",
 	  title: "Bart The Murderer",
-	  character: ["Bart", "FatTony"]
+	  character: ["Bart", "FatTony"],
+	  picture1: "./public/images/Bart.jpg",
+	  picture2: "./public/images/FatTony.jpg"
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "5",
 	  title: "Homer Defined",
-	  character: ["Homer", "Bart", "Millhouse"]
+	  character: ["Homer", "Bart", "Millhouse"],
+	  picture1: "./public/images/Homer.jpg",
+	  picture2: "./public/images/Bart.jpg",
+	  picture3: "./public/images/Millhouse.jpg"
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "6",
 	  title: "Like Farther Like Clown",
-	  character: ["Bart", "lisa", "Krusty"]
+	  character: ["Bart", "Lisa", "Krusty"],
+	  picture1: "./public/images/Bart.jpg",
+	  picture2: "./public/images/Lisa.jpg",
+	  picture3: "./public/images/Krusty.jpg"
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "7",
 	  title: "TreeHouse of Horror II",
-	  character: ["Homer", "Burns", "Bart"]
+	  character: ["Homer", "Burns", "Bart"],
+	  picture1: "./public/images/Homer.jpg",
+	  picture2: "./public/images/Burns.jpg",
+	  picture3: "./public/images/Bart.jpg"
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "8",
 	  title: "Lisas Pony",
-	  character: ["Lisa"]
+	  character: ["Lisa"],
+	  picture1: "./public/images/Lisa.jpg"
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "9",
 	  title: "Saturdays of Thunder",
-	  character: ["Bart", "Martin", "Nelson"]
+	  character: ["Bart", "Martin", "Nelson"],
+	  picture1: "./public/images/Bart.jpg",
+	  picture2: "./public/images/Nelson.jpg",
+	  picture3: "./public/images/Martin.jpg"
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "10",
 	  title: "Flaming Moe's",
-	  character: ["Moe", "Homer"]
+	  character: ["Moe", "Homer"],
+	  picture1: "./public/images/Moe.jpg",
+	  picture2: "./public/images/Homer.jpg"
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "11",
 	  title: "Burns Verkaufen der Kraftwerk",
-	  character: ["Burns", "Homer"]
+	  character: ["Burns", "Homer"],
+	  picture1: "./public/images/Burns.jpg",
+	  picture2: "./public/images/Homer.jpg"
 	}, {
 	  seasonNum: "3",
 	  episodeNum: "12",
 	  title: "I married Marge",
-	  character: ["Homer", "Marge"]
+	  character: ["Homer", "Marge"],
+	  picture1: "./public/images/Homer.jpg",
+	  picture2: "./public/images/Marge.jpg"
 	}];
 
 	var dummyCharacters = [{
@@ -161,6 +190,9 @@
 	}, {
 	  character: "FatTony",
 	  picture: "./public/images/FatTony.jpg"
+	}, {
+	  character: "Krusty",
+	  picture: "./public/images/Krusty.jpg"
 	}];
 
 	var EpisodeSelect = React.createClass({
@@ -288,7 +320,7 @@
 	    var list = this.props.episode.map(function (episode, i) {
 	      return React.createElement(Episode, { key: i, season: episode.seasonNum,
 	        episode: episode.episodeNum,
-	        title: episode.title });
+	        title: episode.title, picture1: episode.picture1, picture2: episode.picture2, picture3: episode.picture3 });
 	    });
 
 	    return React.createElement(
@@ -343,6 +375,13 @@
 	          "Title: ",
 	          this.props.title
 	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "picList" },
+	        React.createElement("img", { className: "smallImg", src: this.props.picture1 }),
+	        React.createElement("img", { className: "smallImg", src: this.props.picture2 }),
+	        React.createElement("img", { className: "smallImg", src: this.props.picture3 })
 	      )
 	    );
 	  }

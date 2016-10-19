@@ -11,6 +11,17 @@ var Episode = React.createClass({
         <div className="title">
           <p>Title: {this.props.title}</p>
         </div>
+
+
+        <div className="picList">
+          <img className="smallImg" src={this.props.picture1}/>
+          <img className="smallImg" src={this.props.picture2}/>
+          <img className="smallImg" src={this.props.picture3}/>
+        </div>
+
+
+
+
       </div>
     )
   }
