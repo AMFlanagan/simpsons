@@ -4,165 +4,11 @@ var CharacterList = require('./characterList.jsx');
 var Resetit = require('./reset.jsx');
 var remainingEps = [];
 var remainingChars = [];
+var axios = require('axios');
 
-var dummyEpisodes = [
-  {
-    seasonNum:"3",
-    episodeNum:"1",
-    title:"Stark Raving Dad",
-    character: ["Bart", "MJ", "Lisa"],
-    picture1: "./public/images/Bart.jpg",
-    picture2: "./public/images/MJ.jpg",
-    picture3: "./public/images/Lisa.jpg"
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"2",
-    title:"Mr. Lisa Goes to washington",
-    character: ["Lisa"],
-    picture1: "./public/images/Lisa.jpg"
+var dummyEpisodes = [];
 
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"3",
-    title:"When Flanders Failed",
-    character: ["Flanders","Homer"],
-    picture1: "./public/images/Flanders.jpg",
-    picture2: "./public/images/Homer.jpg"
-
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"4",
-    title:"Bart The Murderer",
-    character: ["Bart", "FatTony"],
-    picture1: "./public/images/Bart.jpg",
-    picture2: "./public/images/FatTony.jpg"
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"5",
-    title:"Homer Defined",
-    character: ["Homer", "Bart", "Millhouse"],
-    picture1: "./public/images/Homer.jpg",
-    picture2: "./public/images/Bart.jpg",
-    picture3: "./public/images/Millhouse.jpg"
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"6",
-    title:"Like Farther Like Clown",
-    character: ["Bart","Lisa", "Krusty"],
-    picture1: "./public/images/Bart.jpg",
-    picture2: "./public/images/Lisa.jpg",
-    picture3: "./public/images/Krusty.jpg"
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"7",
-    title:"TreeHouse of Horror II",
-    character: ["Homer", "Burns", "Bart"],
-    picture1: "./public/images/Homer.jpg",
-    picture2: "./public/images/Burns.jpg",
-    picture3: "./public/images/Bart.jpg"
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"8",
-    title:"Lisas Pony",
-    character: ["Lisa"],
-    picture1: "./public/images/Lisa.jpg"
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"9",
-    title:"Saturdays of Thunder",
-    character: ["Bart", "Martin", "Nelson"],
-    picture1: "./public/images/Bart.jpg",
-    picture2: "./public/images/Nelson.jpg",
-    picture3: "./public/images/Martin.jpg"
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"10",
-    title:"Flaming Moe's",
-    character: ["Moe", "Homer"],
-    picture1: "./public/images/Moe.jpg",
-    picture2: "./public/images/Homer.jpg"
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"11",
-    title:"Burns Verkaufen der Kraftwerk",
-    character: ["Burns", "Homer"],
-    picture1: "./public/images/Burns.jpg",
-    picture2: "./public/images/Homer.jpg"
-  },
-  {
-    seasonNum:"3",
-    episodeNum:"12",
-    title:"I married Marge",
-    character: ["Homer", "Marge"],
-    picture1: "./public/images/Homer.jpg",
-    picture2: "./public/images/Marge.jpg"
-  },
-];
-
-var dummyCharacters = [
-  {
-    character: "Homer",
-    picture: "./public/images/Homer.jpg"
-  },
-  {
-    character: "Marge",
-    picture: "./public/images/Marge.jpg"
-  },
-  {
-    character: "Bart",
-    picture: "public/images/Bart.jpg"
-  },
-  {
-    character: "Lisa",
-    picture: "./public/images/Lisa.jpg"
-  },
-  {
-    character: "Flanders",
-    picture: "./public/images/Flanders.jpg"
-  },
-  {
-    character: "Millhouse",
-    picture: "./public/images/Millhouse.jpg"
-  },
-  {
-    character: "Martin",
-    picture: "./public/images/Martin.jpg"
-  },
-  {
-    character: "Nelson",
-    picture: "./public/images/Nelson.jpg"
-  },
-  {
-    character: "Burns",
-    picture: "./public/images/Burns.jpg"
-  },
-  {
-    character: "MJ",
-    picture: "./public/images/MJ.jpg"
-  },
-  {
-    character: "Moe",
-    picture: "./public/images/Moe.jpg"
-  },
-  {
-    character: "FatTony",
-    picture: "./public/images/FatTony.jpg"
-  },
-  {
-    character: "Krusty",
-    picture: "./public/images/Krusty.jpg"
-  }
-  ]
+var dummyCharacters = [];
 
 
 var EpisodeSelect = React.createClass({
@@ -172,7 +18,25 @@ var EpisodeSelect = React.createClass({
       selected: []
     }
   },
+  componentDidMount: function(){
+    var data;
+    axios.get('http://localhost:3000/characters')
+        .then(function(response) {
+          dummyCharacters = response.data.Characters;
+          console.log("worked");
+          this.setState({
+            remainingChars: dummyCharacters
+          });
+        }.bind(this));
 
+    axios.get('http://localhost:3000/episodes')
+        .then(function(response) {
+          dummyEpisodes = response.data.Episodes;
+          console.log("worked2");
+        }.bind(this));
+
+
+  },
   handleClick: function(character){
 
     var tryit = this.state.selected;
@@ -256,14 +120,7 @@ var EpisodeSelect = React.createClass({
     })
 
 
-
-
-
-
-
-
   },
-
   render: function() {
 
     if (this.state.remainingEps && this.state.yes == "no") {
