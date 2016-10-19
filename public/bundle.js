@@ -347,34 +347,17 @@
 	      "div",
 	      { className: "episode" },
 	      React.createElement(
-	        "div",
-	        { className: "seasonNum" },
-	        React.createElement(
-	          "p",
-	          null,
-	          "Season: ",
-	          this.props.season
-	        )
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "episodeNum" },
-	        React.createElement(
-	          "p",
-	          null,
-	          "Episode: ",
-	          this.props.episode
-	        )
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "title" },
-	        React.createElement(
-	          "p",
-	          null,
-	          "Title: ",
-	          this.props.title
-	        )
+	        "p",
+	        { className: "text" },
+	        "Season: ",
+	        this.props.season,
+	        React.createElement("br", null),
+	        "     Episode: ",
+	        this.props.episode,
+	        " ",
+	        React.createElement("br", null),
+	        "     Title: ",
+	        this.props.title
 	      ),
 	      React.createElement(
 	        "div",
