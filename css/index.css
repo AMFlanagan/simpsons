@@ -10,8 +10,14 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  width: 100%;
 }
+.episodes{
+  position: inherit;
+  display: inline-block;
+  width: 100%;
 
+}
 .episode {
   height: 1%;
   background-color: white;
@@ -23,26 +29,29 @@ body {
   border: 2px solid;
   border-color: #cccc00;
   display: block;
+  margin-left: 20%;
+  margin-right: 20%;
+  position: static;
 
 }
 
-.episodes {
-  padding-top: 10%;
-}
+
 
 .ChaPic {
   border: 2px solid;
   border-color: black;
   border-radius: 50%;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .characters {
   padding: 5%
-  height: 40%;
+  height: auto;
   display: block;
   padding-left: 10%;
   padding-top: 2%;
+  padding-bottom: inherit;
 }
 
 .character {
@@ -55,9 +64,7 @@ body {
 
 
 .count {
-  text-align: center;
-  display: inline-block;
-  padding: 15px 25px;
+  display: block;
   font-size: 24px;
   cursor: pointer;
   text-align: center;
@@ -68,17 +75,20 @@ body {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
-  width: 50%;
+  width: 10%;
+  position: fixed;
+  top: 8%;
+  right: 2%;
 }
 
 .SimpT {
   height: 213px;
   width: 480px;
+
 }
 
 .reset {
-  display: inline-block;
-  padding: 15px 25px;
+  display: block;
   font-size: 24px;
   cursor: pointer;
   text-align: center;
@@ -89,11 +99,10 @@ body {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
-  width: 50%;
-  margin: 0 auto;
-
-
-
+  width: 10%;
+  position: fixed;
+  top: 5%;
+  right: 2%;
 }
 .reset:hover {background-color: #3e8e41}
 

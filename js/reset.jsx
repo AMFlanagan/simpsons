@@ -11,7 +11,9 @@ var Resetit = React.createClass({
 
   render: function() {
     return (
+      <div className = "RS">
         <input type="button" value="Reset" className="reset" onClick={this.props.handleReset}></input>
+      </div>
     )
   }
 });

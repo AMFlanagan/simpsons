@@ -184,25 +184,20 @@
 	        selected: tryit
 	      });
 
-	      console.log(this.state.selected);
-
-	      this.episodeRidder(dummyEpisodes);
+	      this.episodeRidder(dummyEpisodes, dummyCharacters);
 	    }
 	  },
 
 	  handleReset: function handleReset() {
 
 	    this.setState({
-	      selected: []
-
+	      selected: [],
+	      remainingEps: [],
+	      yes: "yes"
 	    });
-
-	    this.episodeRidder();
-
-	    // console.log(this.state.selected)
 	  },
 
-	  episodeRidder: function episodeRidder(episodes) {
+	  episodeRidder: function episodeRidder(episodes, characters) {
 	    var remainingEps = [];
 
 	    for (var i in episodes) {
@@ -221,10 +216,9 @@
 	    }
 
 	    this.setState({
-	      remainingEps: remainingEps
+	      remainingEps: remainingEps,
+	      yes: "no"
 	    });
-
-	    console.log(remainingEps);
 
 	    var names = [];
 
@@ -237,9 +231,9 @@
 	    var remainingChars = [];
 
 	    for (var i in names) {
-	      for (var j in dummyCharacters) {
-	        if (names[i] == dummyCharacters[j].character) {
-	          remainingChars.push(dummyCharacters[j]);
+	      for (var j in characters) {
+	        if (names[i] == characters[j].character) {
+	          remainingChars.push(characters[j]);
 	        }
 	      }
 	    }
@@ -247,13 +241,11 @@
 	    this.setState({
 	      remainingChars: remainingChars
 	    });
-	    console.log(remainingChars);
-	    console.log(names);
 	  },
 
 	  render: function render() {
 
-	    if (this.state.remainingEps) {
+	    if (this.state.remainingEps && this.state.yes == "no") {
 	      return React.createElement(
 	        'div',
 	        { className: 'episodeSelect' },
@@ -1006,7 +998,11 @@
 	  },
 
 	  render: function render() {
-	    return React.createElement("input", { type: "button", value: "Reset", className: "reset", onClick: this.props.handleReset });
+	    return React.createElement(
+	      "div",
+	      { className: "RS" },
+	      React.createElement("input", { type: "button", value: "Reset", className: "reset", onClick: this.props.handleReset })
+	    );
 	  }
 	});
 

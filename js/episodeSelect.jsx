@@ -151,9 +151,8 @@ var EpisodeSelect = React.createClass({
         selected: tryit
       });
 
-      console.log(this.state.selected)
 
-      this.episodeRidder(dummyEpisodes)
+      this.episodeRidder(dummyEpisodes, dummyCharacters)
 
 
     }
@@ -163,19 +162,17 @@ var EpisodeSelect = React.createClass({
 
   handleReset: function(){
 
-      this.setState({
-        selected: [],
+    this.setState({
+      selected: [],
+      remainingEps: [],
+      yes: "yes"
+    });
 
-      });
-
-      this.episodeRidder()
-
-      // console.log(this.state.selected)
 
   },
 
 
-  episodeRidder: function(episodes){
+  episodeRidder: function(episodes, characters){
     var remainingEps = [];
 
     for (var i in episodes){
@@ -197,11 +194,11 @@ var EpisodeSelect = React.createClass({
     }
 
     this.setState({
-      remainingEps: remainingEps
+      remainingEps: remainingEps,
+      yes: "no"
     })
 
 
-    console.log(remainingEps)
 
     var names = []
 
@@ -215,17 +212,16 @@ var EpisodeSelect = React.createClass({
     var remainingChars = []
 
     for (var i in names) {
-      for (var j in dummyCharacters)
-        if (names[i] == dummyCharacters[j].character){
-          remainingChars.push(dummyCharacters[j])
+      for (var j in characters)
+        if (names[i] == characters[j].character){
+          remainingChars.push(characters[j])
         }
     }
 
     this.setState({
       remainingChars: remainingChars
     })
-    console.log(remainingChars)
-    console.log(names)
+
 
 
 
@@ -237,7 +233,7 @@ var EpisodeSelect = React.createClass({
 
   render: function() {
 
-    if (this.state.remainingEps) {
+    if (this.state.remainingEps && this.state.yes == "no") {
       return (
         <div className="episodeSelect">
           <CharacterList characters={this.state.remainingChars} handleClick={this.handleClick}/><br></br>
@@ -247,7 +243,8 @@ var EpisodeSelect = React.createClass({
         </div>
 
       )
-    }  else {
+    }
+    else {
       return (
         <div className="episodeSelect">
           <CharacterList characters={dummyCharacters} handleClick={this.handleClick}/><br></br>
