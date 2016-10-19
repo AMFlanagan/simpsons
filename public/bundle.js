@@ -61,6 +61,7 @@
 	var CharacterList = __webpack_require__(5);
 	var Resetit = __webpack_require__(14);
 	var remainingEps = [];
+	var remainingChars = [];
 
 	var dummyEpisodes = [{
 	  seasonNum: "3",
@@ -182,9 +183,10 @@
 	      this.setState({
 	        selected: tryit
 	      });
-	      this.episodeRidder(dummyEpisodes);
 
 	      console.log(this.state.selected);
+
+	      this.episodeRidder(dummyEpisodes);
 	    }
 	  },
 
@@ -192,29 +194,17 @@
 
 	    this.setState({
 	      selected: []
+
 	    });
 
 	    this.episodeRidder();
 
-	    console.log(this.state.selected);
+	    // console.log(this.state.selected)
 	  },
-
-	  characterRidder: function characterRidder(characters) {},
 
 	  episodeRidder: function episodeRidder(episodes) {
 	    var remainingEps = [];
-	    console.log('hello');
-	    console.log(dummyEpisodes);
 
-	    // for (var i in episodes){
-	    //   if (dummyEpisodes[i].character[0] == this.state.selected[0]) {
-	    //     remainingEps.push(episodes[i]);
-	    //   }
-	    // }
-
-	    // this.setState({
-	    //   remainingEps: remainingEps
-	    // })
 	    for (var i in episodes) {
 	      var num = 0;
 	      for (var j in episodes[i].character) {
@@ -235,6 +225,30 @@
 	    });
 
 	    console.log(remainingEps);
+
+	    var names = [];
+
+	    for (var i in remainingEps) {
+	      for (var j in remainingEps[i].character) {
+	        if (names.indexOf(remainingEps[i].character[j]) < 0) names.push(remainingEps[i].character[j]);
+	      }
+	    }
+
+	    var remainingChars = [];
+
+	    for (var i in names) {
+	      for (var j in dummyCharacters) {
+	        if (names[i] == dummyCharacters[j].character) {
+	          remainingChars.push(dummyCharacters[j]);
+	        }
+	      }
+	    }
+
+	    this.setState({
+	      remainingChars: remainingChars
+	    });
+	    console.log(remainingChars);
+	    console.log(names);
 	  },
 
 	  render: function render() {
@@ -243,7 +257,7 @@
 	      return React.createElement(
 	        'div',
 	        { className: 'episodeSelect' },
-	        React.createElement(CharacterList, { characters: dummyCharacters, handleClick: this.handleClick }),
+	        React.createElement(CharacterList, { characters: this.state.remainingChars, handleClick: this.handleClick }),
 	        React.createElement('br', null),
 	        React.createElement(Resetit, { handleReset: this.handleReset }),
 	        React.createElement('br', null),
@@ -361,15 +375,11 @@
 	    });
 
 	    return React.createElement(
-	      "div",
+	      "p",
 	      { className: "count" },
-	      React.createElement(
-	        "p",
-	        null,
-	        "Your search returned ",
-	        list.length,
-	        " episodes"
-	      )
+	      "Your search returned ",
+	      list.length,
+	      " episodes"
 	    );
 	  }
 	});
@@ -996,11 +1006,7 @@
 	  },
 
 	  render: function render() {
-	    return React.createElement(
-	      "div",
-	      { className: "reset" },
-	      React.createElement("input", { type: "button", value: "Reset", className: "RS", onClick: this.props.handleReset })
-	    );
+	    return React.createElement("input", { type: "button", value: "Reset", className: "reset", onClick: this.props.handleReset });
 	  }
 	});
 

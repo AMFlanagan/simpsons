@@ -41,7 +41,7 @@ body {
   padding: 5%
   height: 40%;
   display: block;
-  padding-left: 5%;
+  padding-left: 10%;
   padding-top: 2%;
 }
 
@@ -53,18 +53,9 @@ body {
   display: block;
 }
 
+
 .count {
-  background-color: white;
-  margin: 0 auto;
-  display: block;
-}
-
-.SimpT {
-  height: 213px;
-  width: 480px;
-}
-
-.RS {
+  text-align: center;
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -78,20 +69,36 @@ body {
   border-radius: 15px;
   box-shadow: 0 9px #999;
   width: 50%;
-  padding-left: 25%;
-  padding-right: 25%;
-
 }
-.RS:hover {background-color: #3e8e41}
 
-.RS:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+.SimpT {
+  height: 213px;
+  width: 480px;
 }
 
 .reset {
-  display: block;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  width: 50%;
   margin: 0 auto;
-  height: inherit;
+
+
+
+}
+.reset:hover {background-color: #3e8e41}
+
+.reset:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

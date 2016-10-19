@@ -3,6 +3,7 @@ var EpisodeCount = require('./episodeCount.jsx');
 var CharacterList = require('./characterList.jsx');
 var Resetit = require('./reset.jsx');
 var remainingEps = [];
+var remainingChars = [];
 
 var dummyEpisodes = [
   {
@@ -149,9 +150,11 @@ var EpisodeSelect = React.createClass({
       this.setState({
         selected: tryit
       });
+
+      console.log(this.state.selected)
+
       this.episodeRidder(dummyEpisodes)
 
-    console.log(this.state.selected)
 
     }
 
@@ -161,34 +164,20 @@ var EpisodeSelect = React.createClass({
   handleReset: function(){
 
       this.setState({
-        selected: []
+        selected: [],
+
       });
 
       this.episodeRidder()
 
-      console.log(this.state.selected)
+      // console.log(this.state.selected)
 
   },
 
-  characterRidder: function(characters){
-
-  },
 
   episodeRidder: function(episodes){
     var remainingEps = [];
-    console.log('hello')
-    console.log(dummyEpisodes)
 
-
-    // for (var i in episodes){
-    //   if (dummyEpisodes[i].character[0] == this.state.selected[0]) {
-    //     remainingEps.push(episodes[i]);
-    //   }
-    // }
-
-    // this.setState({
-    //   remainingEps: remainingEps
-    // })
     for (var i in episodes){
       var num = 0
       for (var j in episodes[i].character){
@@ -202,6 +191,9 @@ var EpisodeSelect = React.createClass({
           var num = 0;
         }
       }
+
+
+
     }
 
     this.setState({
@@ -210,6 +202,34 @@ var EpisodeSelect = React.createClass({
 
 
     console.log(remainingEps)
+
+    var names = []
+
+    for (var i in remainingEps){
+      for (var j in remainingEps[i].character){
+        if (names.indexOf(remainingEps[i].character[j]) < 0 )
+          names.push(remainingEps[i].character[j])
+      }
+    }
+
+    var remainingChars = []
+
+    for (var i in names) {
+      for (var j in dummyCharacters)
+        if (names[i] == dummyCharacters[j].character){
+          remainingChars.push(dummyCharacters[j])
+        }
+    }
+
+    this.setState({
+      remainingChars: remainingChars
+    })
+    console.log(remainingChars)
+    console.log(names)
+
+
+
+
 
 
 
@@ -220,14 +240,14 @@ var EpisodeSelect = React.createClass({
     if (this.state.remainingEps) {
       return (
         <div className="episodeSelect">
-          <CharacterList characters={dummyCharacters} handleClick={this.handleClick}/><br></br>
+          <CharacterList characters={this.state.remainingChars} handleClick={this.handleClick}/><br></br>
           <Resetit handleReset={this.handleReset} /><br></br>
           <EpisodeCount episode={this.state.remainingEps} /><br></br>
           <EpisodeList episode={this.state.remainingEps} />
         </div>
 
       )
-    } else {
+    }  else {
       return (
         <div className="episodeSelect">
           <CharacterList characters={dummyCharacters} handleClick={this.handleClick}/><br></br>
