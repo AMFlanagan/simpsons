@@ -109,6 +109,13 @@
 	        selected: tryit
 	      });
 	
+	      // add character to state (flase)
+	      // amend to state
+	      // send character to display
+	      // in display - if statement to check if character is there
+	      // if so then wrap around new div with shade
+	
+	
 	      this.episodeRidder(dummyEpisodes, dummyCharacters);
 	    }
 	  },
