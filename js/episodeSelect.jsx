@@ -10,7 +10,6 @@ var dummyEpisodes = [];
 
 var dummyCharacters = [];
 
-
 var EpisodeSelect = React.createClass({
 
   getInitialState: function(){
@@ -57,10 +56,7 @@ var EpisodeSelect = React.createClass({
 
       this.episodeRidder(dummyEpisodes, dummyCharacters)
 
-
     }
-
-
   },
 
   handleReset: function(){
@@ -70,10 +66,7 @@ var EpisodeSelect = React.createClass({
       remainingEps: [],
       yes: "yes"
     });
-
-
   },
-
 
   episodeRidder: function(episodes, characters){
     var remainingEps = [];
@@ -91,17 +84,12 @@ var EpisodeSelect = React.createClass({
           var num = 0;
         }
       }
-
-
-
     }
 
     this.setState({
       remainingEps: remainingEps,
       yes: "no"
     })
-
-
 
     var names = []
 
@@ -124,9 +112,8 @@ var EpisodeSelect = React.createClass({
     this.setState({
       remainingChars: remainingChars
     })
-
-
   },
+
   render: function() {
 
     if (this.state.remainingEps && this.state.yes == "no") {

@@ -10,13 +10,11 @@ var EpisodeList = React.createClass({
       )
     });
 
-
     return (
       <div className="episodes">
         {list}
       </div>
     )
-
   }
 });
 

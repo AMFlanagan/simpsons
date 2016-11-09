@@ -6,21 +6,13 @@ var Character = React.createClass({
     return {
       selected: []
     }
-
   },
-
 
   handleClick: function() {
-
     this.props.handleClick(this.props.character)
-
   },
 
-
   render: function() {
-
-
-
     return (
 
       <div className="character">

@@ -8,13 +8,10 @@ var EpisodeCount = React.createClass({
       )
     });
 
-
     return (
 
         <p className="count">Your search returned {list.length} episodes</p>
     )
-
-
   }
 });
 

@@ -1,8 +1,7 @@
 var Character = require('./character.jsx');
 
 var CharacterList = React.createClass({
-
-
+    
   render: function() {
     var self = this;
     var list = this.props.characters.map(function(character, i) {
@@ -11,13 +10,11 @@ var CharacterList = React.createClass({
       )
     });
 
-
     return (
       <div className="characters">
         {list}
       </div>
     )
-
   }
 });
 
