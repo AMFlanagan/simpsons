@@ -79,7 +79,7 @@
 	  },
 	  componentDidMount: function componentDidMount() {
 	    var data;
-	    axios.get('http://localhost:3000/characters').then(function (response) {
+	    axios.get('http://localhost:3031/characters').then(function (response) {
 	      dummyCharacters = response.data.Characters;
 	      console.log("worked");
 	      this.setState({
@@ -87,7 +87,7 @@
 	      });
 	    }.bind(this));
 
-	    axios.get('http://localhost:3000/episodes').then(function (response) {
+	    axios.get('http://localhost:3031/episodes').then(function (response) {
 	      dummyEpisodes = response.data.Episodes;
 	      console.log("worked2");
 	    }.bind(this));

@@ -19,7 +19,7 @@ var EpisodeSelect = React.createClass({
   },
   componentDidMount: function(){
     var data;
-    axios.get('http://localhost:3000/characters')
+    axios.get('http://localhost:3031/characters')
         .then(function(response) {
           dummyCharacters = response.data.Characters;
           console.log("worked");
@@ -28,7 +28,7 @@ var EpisodeSelect = React.createClass({
           });
         }.bind(this));
 
-    axios.get('http://localhost:3000/episodes')
+    axios.get('http://localhost:3031/episodes')
         .then(function(response) {
           dummyEpisodes = response.data.Episodes;
           console.log("worked2");
