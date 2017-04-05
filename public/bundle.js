@@ -56,6 +56,12 @@
 
 	'use strict';
 
+	var _characters = __webpack_require__(40);
+
+	var _characters2 = _interopRequireDefault(_characters);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var EpisodeList = __webpack_require__(2);
 	var EpisodeCount = __webpack_require__(4);
 	var CharacterList = __webpack_require__(5);
@@ -64,9 +70,17 @@
 	var remainingChars = [];
 	var axios = __webpack_require__(15);
 
-	var dummyEpisodes = [];
 
-	var dummyCharacters = [];
+	var dummyEpisodes = [{
+	  seasonNum: "2",
+	  episodeNum: "5",
+	  title: "Dancin' Homer",
+	  character: ["Homer", "Burns", "Marge"],
+	  picture1: "./public/images/Homer.jpg",
+	  picture2: "./public/images/Burns.jpg",
+	  picture3: "./public/images/Marge.jpg",
+	  Description: "Homer fires up the crowd at a Springfield Isotopes game and is chosen to be the team's new mascot. He immediately becomes a popular attraction and the Isotopes start a winning streak. As a result, Homer is promoted to the team in Capital City. The Simpsons move to Capital City, but Homer fails to enthrall the crowd, and returns home."
+	}];
 
 	var EpisodeSelect = React.createClass({
 	  displayName: 'EpisodeSelect',
@@ -77,21 +91,29 @@
 	      selected: []
 	    };
 	  },
-	  componentDidMount: function componentDidMount() {
-	    var data;
-	    axios.get('http://localhost:3031/characters').then(function (response) {
-	      dummyCharacters = response.data.Characters;
-	      console.log("worked");
-	      this.setState({
-	        remainingChars: dummyCharacters
-	      });
-	    }.bind(this));
 
-	    axios.get('http://localhost:3031/episodes').then(function (response) {
-	      dummyEpisodes = response.data.Episodes;
-	      console.log("worked2");
-	    }.bind(this));
+	  componentWillMount: function componentWillMount() {
+	    console.log(_characters2.default.characters);
+	    this.setState({
+	      remainingChars: _characters2.default,
+	      remainingEps: dummyEpisodes
+	    });
+	    // axios.get('http://localhost:3031/characters')
+	    //     .then(function(response) {
+	    //       dummyCharacters = response.data.Characters;
+	    //       console.log("worked");
+	    //       this.setState({
+	    //         remainingChars: dummyCharacters
+	    //       });
+	    //     }.bind(this));
+	    //
+	    // axios.get('http://localhost:3031/episodes')
+	    //     .then(function(response) {
+	    //       dummyEpisodes = response.data.Episodes;
+	    //       console.log("worked2");
+	    //     }.bind(this));
 	  },
+
 	  handleClick: function handleClick(character) {
 
 	    var tryit = this.state.selected;
@@ -110,7 +132,7 @@
 	      // if so then wrap around new div with shade
 
 
-	      this.episodeRidder(dummyEpisodes, dummyCharacters);
+	      this.episodeRidder(dummyEpisodes, _characters2.default);
 	    }
 	  },
 
@@ -175,7 +197,7 @@
 	      return React.createElement(
 	        'div',
 	        { className: 'episodeSelect' },
-	        React.createElement(CharacterList, { characters: this.state.remainingChars, handleClick: this.handleClick }),
+	        React.createElement(CharacterList, { characters: this.state.remainingChars.characters, handleClick: this.handleClick }),
 	        React.createElement('br', null),
 	        React.createElement(Resetit, { handleReset: this.handleReset }),
 	        React.createElement('br', null),
@@ -187,7 +209,7 @@
 	      return React.createElement(
 	        'div',
 	        { className: 'episodeSelect' },
-	        React.createElement(CharacterList, { characters: dummyCharacters, handleClick: this.handleClick }),
+	        React.createElement(CharacterList, { characters: _characters2.default.characters, handleClick: this.handleClick }),
 	        React.createElement('br', null),
 	        React.createElement(Resetit, { handleReset: this.handleReset }),
 	        React.createElement('br', null)
@@ -2399,6 +2421,268 @@
 	    return callback.apply(null, arr);
 	  };
 	};
+
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		characters: [
+			{
+				character: "Homer",
+				picture: "./public/images/Homer.jpg"
+			},
+			{
+				character: "Marge",
+				picture: "./public/images/Marge.jpg"
+			},
+			{
+				character: "Bart",
+				picture: "./public/images/Bart.jpg"
+			},
+			{
+				character: "Lisa",
+				picture: "./public/images/Lisa.jpg"
+			},
+			{
+				character: "Maggie",
+				picture: "./public/images/Maggie.jpg"
+			},
+			{
+				character: "Dog",
+				picture: "./public/images/Dog.jpg"
+			},
+			{
+				character: "Abe",
+				picture: "./public/images/Abe.jpg"
+			},
+			{
+				character: "Mona",
+				picture: "./public/images/Mona.jpg"
+			},
+			{
+				character: "Selma",
+				picture: "./public/images/Selma.jpg"
+			},
+			{
+				character: "Patty",
+				picture: "./public/images/Patty.jpg"
+			},
+			{
+				character: "Herb",
+				picture: "./public/images/Herb.jpg"
+			},
+			{
+				character: "Flanders",
+				picture: "./public/images/Flanders.jpg"
+			},
+			{
+				character: "Maude",
+				picture: "./public/images/Maude.jpg"
+			},
+			{
+				character: "Rod",
+				picture: "./public/images/Rod.jpg"
+			},
+			{
+				character: "Todd",
+				picture: "./public/images/Todd.jpg"
+			},
+			{
+				character: "Moe",
+				picture: "./public/images/Moe.jpg"
+			},
+			{
+				character: "Barney",
+				picture: "./public/images/Barney.jpg"
+			},
+			{
+				character: "Burns",
+				picture: "./public/images/Burns.jpg"
+			},
+			{
+				character: "Smithers",
+				picture: "./public/images/Smithers.jpg"
+			},
+			{
+				character: "Lenny",
+				picture: "./public/images/Lenny.jpg"
+			},
+			{
+				character: "Carl",
+				picture: "./public/images/Carl.jpg"
+			},
+			{
+				character: "Mindy",
+				picture: "./public/images/Mindy.jpg"
+			},
+			{
+				character: "Grimes",
+				picture: "./public/images/Grimes.jpg"
+			},
+			{
+				character: "Karl",
+				picture: "./public/images/Karl.jpg"
+			},
+			{
+				character: "Skinner",
+				picture: "./public/images/Skinner.jpg"
+			},
+			{
+				character: "Edna",
+				picture: "./public/images/Edna.jpg"
+			},
+			{
+				character: "Willie",
+				picture: "./public/images/Willie.jpg"
+			},
+			{
+				character: "Troy",
+				picture: "./public/images/Troy.jpg"
+			},
+			{
+				character: "Kent",
+				picture: "./public/images/Kent.jpg"
+			},
+			{
+				character: "Krusty",
+				picture: "./public/images/Krusty.jpg"
+			},
+			{
+				character: "Bob",
+				picture: "./public/images/Bob.jpg"
+			},
+			{
+				character: "Botz",
+				picture: "./public/images/Botz.jpg"
+			},
+			{
+				character: "Wolf",
+				picture: "./public/images/Wolf.jpg"
+			},
+			{
+				character: "Buck",
+				picture: "./public/images/Buck.jpg"
+			},
+			{
+				character: "Wiggum",
+				picture: "./public/images/Wiggum.jpg"
+			},
+			{
+				character: "Quimby",
+				picture: "./public/images/Quimby.jpg"
+			},
+			{
+				character: "Rex",
+				picture: "./public/images/Rex.jpg"
+			},
+			{
+				character: "Snake",
+				picture: "./public/images/Snake.jpg"
+			},
+			{
+				character: "FatTony",
+				picture: "./public/images/FatTony.jpg"
+			},
+			{
+				character: "Apu",
+				picture: "./public/images/Apu.jpg"
+			},
+			{
+				character: "Nelson",
+				picture: "./public/images/Nelson.jpg"
+			},
+			{
+				character: "Jimbo",
+				picture: "./public/images/Jimbo.jpg"
+			},
+			{
+				character: "Millhouse",
+				picture: "./public/images/Millhouse.jpg"
+			},
+			{
+				character: "Martin",
+				picture: "./public/images/Martin.jpg"
+			},
+			{
+				character: "Ralph",
+				picture: "./public/images/Ralph.jpg"
+			},
+			{
+				character: "Kirk",
+				picture: "./public/images/Kirk.jpg"
+			},
+			{
+				character: "Luann",
+				picture: "./public/images/Luann.jpg"
+			},
+			{
+				character: "Lovejoy",
+				picture: "./public/images/Lovejoy.jpg"
+			},
+			{
+				character: "Larry",
+				picture: "./public/images/Larry.jpg"
+			},
+			{
+				character: "Ziff",
+				picture: "./public/images/Ziff.jpg"
+			},
+			{
+				character: "MJ",
+				picture: "./public/images/MJ.jpg"
+			},
+			{
+				character: "Hank",
+				picture: "./public/images/Hank.jpg"
+			},
+			{
+				character: "Chester",
+				picture: "./public/images/Chester.jpg"
+			},
+			{
+				character: "Roger",
+				picture: "./public/images/Roger.jpg"
+			},
+			{
+				character: "Lurleen",
+				picture: "./public/images/Lurleen.jpg"
+			},
+			{
+				character: "Cletus",
+				picture: "./public/images/Cletus.jpg"
+			},
+			{
+				character: "Lyle",
+				picture: "./public/images/Lyle.jpg"
+			},
+			{
+				character: "Murphy",
+				picture: "./public/images/Murphy.jpg"
+			},
+			{
+				character: "Comic",
+				picture: "./public/images/Comic.jpg"
+			},
+			{
+				character: "Hibbert",
+				picture: "./public/images/Hibbert.jpg"
+			},
+			{
+				character: "Stampy",
+				picture: "./public/images/Stampy.jpg"
+			},
+			{
+				character: "Coyote",
+				picture: "./public/images/Coyote.jpg"
+			},
+			{
+				character: "Mojo",
+				picture: "./public/images/Mojo.jpg"
+			},
+		]
+	}
 
 
 /***/ }
