@@ -3,6 +3,7 @@ var Character = require('./character.jsx');
 var CharacterList = React.createClass({
 
   render: function() {
+      console.log(this.props.characters);
     var self = this;
     var list = this.props.characters.map(function(character, i) {
       return (

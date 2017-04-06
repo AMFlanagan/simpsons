@@ -6,19 +6,7 @@ var remainingEps = [];
 var remainingChars = [];
 var axios = require('axios');
 import dummyCharacters from '../characters.js';
-
-var dummyEpisodes = [
-    {
-      seasonNum: "2",
-      episodeNum: "5",
-      title: "Dancin' Homer",
-      character: ["Homer", "Burns", "Marge"],
-      picture1: "./public/images/Homer.jpg",
-      picture2: "./public/images/Burns.jpg",
-      picture3: "./public/images/Marge.jpg",
-      Description: "Homer fires up the crowd at a Springfield Isotopes game and is chosen to be the team's new mascot. He immediately becomes a popular attraction and the Isotopes start a winning streak. As a result, Homer is promoted to the team in Capital City. The Simpsons move to Capital City, but Homer fails to enthrall the crowd, and returns home."
-    }
-];
+import dummyEpisodes from '../episodes.js'
 
 
 var EpisodeSelect = React.createClass({
@@ -30,27 +18,13 @@ var EpisodeSelect = React.createClass({
     },
 
   componentWillMount: function(){
-console.log(dummyCharacters.characters);
+
     this.setState(
         {
-            remainingChars: dummyCharacters,
+            remainingChars: dummyCharacters.characters,
             remainingEps: dummyEpisodes
         }
     )
-    // axios.get('http://localhost:3031/characters')
-    //     .then(function(response) {
-    //       dummyCharacters = response.data.Characters;
-    //       console.log("worked");
-    //       this.setState({
-    //         remainingChars: dummyCharacters
-    //       });
-    //     }.bind(this));
-    //
-    // axios.get('http://localhost:3031/episodes')
-    //     .then(function(response) {
-    //       dummyEpisodes = response.data.Episodes;
-    //       console.log("worked2");
-    //     }.bind(this));
 },
 
   handleClick: function(character){
@@ -71,7 +45,7 @@ console.log(dummyCharacters.characters);
       // if so then wrap around new div with shade
 
 
-      this.episodeRidder(dummyEpisodes, dummyCharacters)
+      this.episodeRidder(dummyEpisodes.episodes, dummyCharacters.characters)
     }
 },
 
@@ -86,7 +60,8 @@ console.log(dummyCharacters.characters);
 
   episodeRidder: function(episodes, characters){
     var remainingEps = [];
-
+console.log(characters);
+console.log(episodes);
     for (var i in episodes){
       var num = 0
       for (var j in episodes[i].character){
@@ -97,6 +72,7 @@ console.log(dummyCharacters.characters);
         }
         if (num === this.state.selected.length){
           remainingEps.push(episodes[i])
+          console.log("Episodes", episodes[i]);
           var num = 0;
         }
       }
@@ -113,6 +89,7 @@ console.log(dummyCharacters.characters);
       for (var j in remainingEps[i].character){
         if (names.indexOf(remainingEps[i].character[j]) < 0 )
           names.push(remainingEps[i].character[j])
+          console.log("!!!!!!", remainingEps[i].character[j]);
       }
     }
 
@@ -124,7 +101,7 @@ console.log(dummyCharacters.characters);
           remainingChars.push(characters[j])
         }
     }
-
+console.log("remainingChars", remainingChars);
     this.setState({
       remainingChars: remainingChars
     })
@@ -135,7 +112,7 @@ console.log(dummyCharacters.characters);
     if (this.state.remainingEps && this.state.yes == "no") {
       return (
         <div className="episodeSelect">
-          <CharacterList characters={this.state.remainingChars.characters} handleClick={this.handleClick}/><br></br>
+          <CharacterList characters={this.state.remainingChars} handleClick={this.handleClick}/><br></br>
           <Resetit handleReset={this.handleReset} /><br></br>
           <EpisodeCount episode={this.state.remainingEps} /><br></br>
           <EpisodeList episode={this.state.remainingEps} />
